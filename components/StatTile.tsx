@@ -1,3 +1,5 @@
+import { SELECTED_MEAL_BACKGROUND } from "@/tokens/colors";
+
 export type StatTileProps = {
   label: string;
   value: number;
@@ -12,7 +14,7 @@ export function StatTile({ label, value, suffix }: StatTileProps) {
         borderRadius: "10px",
         border: "1px solid #111827",
         background:
-          "radial-gradient(circle at top left, rgba(59,130,246,0.25), transparent 55%), #020617",
+          `radial-gradient(circle at top left, rgba(59,130,246,0.25), transparent 55%), ${SELECTED_MEAL_BACKGROUND}`,
       }}
     >
       <p

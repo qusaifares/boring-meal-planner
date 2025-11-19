@@ -9,6 +9,7 @@ import type { PlannerState } from "@/types/planner";
 import { Meal, MealCategory } from "@/types/Meal";
 import { CategorySection } from "@/components/CategorySection";
 import { StatTile } from "@/components/StatTile";
+import { SECTION_BACKGROUND, SELECTED_MEAL_BACKGROUND } from "@/tokens/colors";
 
 const STORAGE_KEY = "boring-meal-planner-v2";
 const PERSIST_WITH_LOCAL_STORAGE = false;
@@ -96,13 +97,15 @@ export default function HomePage() {
         display: "flex",
         justifyContent: "center",
         padding: "24px",
+        width: '100%',
+        margin: '0 auto',
       }}
     >
       <div
         style={{
-          width: "100%",
           maxWidth: "1200px",
           display: "flex",
+          alignItems: 'stretch',
           flexWrap: "wrap",
           gap: "24px",
         }}
@@ -111,11 +114,12 @@ export default function HomePage() {
         {/* Left Column */}
         <section
           style={{
-            background: "#020617",
+            background: SECTION_BACKGROUND,
             borderRadius: "16px",
             padding: "20px",
             border: "1px solid #1f2937",
-            maxWidth: 800,
+            minWidth: 500,
+            flexGrow: 1,
           }}
         >
           <h1 style={{ fontSize: "1.5rem", marginBottom: "8px", fontWeight: 600 }}>
@@ -170,12 +174,12 @@ export default function HomePage() {
         {/* Right Column */}
         <section
           style={{
-            background: "#020617",
+            background: SECTION_BACKGROUND,
             borderRadius: "16px",
             padding: "20px",
             border: "1px solid #1f2937",
-            alignSelf: "flex-start",
-            maxWidth: 350
+            width: 350,
+            flexGrow: 1,
           }}
         >
           <h2
@@ -231,7 +235,7 @@ export default function HomePage() {
                     style={{
                       padding: "8px 10px",
                       borderRadius: "8px",
-                      background: "#020617",
+                      background: SELECTED_MEAL_BACKGROUND,
                       border: "1px solid #111827",
                     }}
                   >

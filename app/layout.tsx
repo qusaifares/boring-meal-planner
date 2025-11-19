@@ -1,3 +1,4 @@
+import { BACKGROUND } from "@/tokens/colors";
 import "./globals.css";
 import type { Metadata } from "next";
 
@@ -18,7 +19,7 @@ export default function RootLayout({
           margin: 0,
           fontFamily:
             "-apple-system, BlinkMacSystemFont, system-ui, -system-ui, sans-serif",
-          background: "#050816",
+          background: BACKGROUND,
           color: "#f9fafb",
         }}
       >
