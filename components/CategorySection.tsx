@@ -16,7 +16,17 @@ export function CategorySection({
   selections: string[];
   onChange: (mealId: string) => void;
 }) {
+  const NONE_MEAL: Meal = {
+    id: "", name: "— None —",
+    calories: 0,
+    protein: 0,
+    carbs: 0,
+    fat: 0,
+    category,
+  };
   const isMobile = useIsMobile();
+  
+  const getMealLabel = (meal: Meal): string => meal.id === '' ? meal.name : `${meal.name} (${meal.calories} kcal, ${meal.protein}g P)`;
   
   return (
     <div style={{ marginBottom: isMobile ? "20px" : "24px" }}>
@@ -36,10 +46,9 @@ export function CategorySection({
             fontSize: isMobile ? "16px" : "14px",
           }}
         >
-          <option value="">— None —</option>
-          {meals.map((m) => (
+          {[NONE_MEAL, ...meals].map((m) => (
             <option key={m.id} value={m.id}>
-              {m.name} ({m.calories} kcal, {m.protein}g P)
+              {getMealLabel(m)}
             </option>
           ))}
         </select>
@@ -47,7 +56,7 @@ export function CategorySection({
 
       {config.inputType === "radio" && (
           <>
-            {[{ id: "", name: "— None —", calories: 0, protein: 0 }, ...meals].map((m) => (
+            {[NONE_MEAL, ...meals].map((m) => (
               <label
                 key={m.id}
                 style={{
@@ -66,7 +75,7 @@ export function CategorySection({
                   onChange={() => onChange(m.id)}
                 />
                 <span>
-                  {m.id === '' ? m.name : `${m.name} (${m.calories} kcal, ${m.protein}g P)`}
+                  {getMealLabel(m)}
                 </span>
               </label>
             ))}
