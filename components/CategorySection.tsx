@@ -66,7 +66,7 @@ export function CategorySection({
                   onChange={() => onChange(m.id)}
                 />
                 <span>
-                  {m.name} ({m.calories} kcal, {m.protein}g P)
+                  {m.id === '' ? m.name : `${m.name} (${m.calories} kcal, ${m.protein}g P)`}
                 </span>
               </label>
             ))}
