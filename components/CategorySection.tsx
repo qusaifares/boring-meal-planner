@@ -1,6 +1,7 @@
 import { CategoryConfig } from "@/data/categories";
 import { MEAL_LIBRARY } from "@/data/meals";
 import { Meal, MealCategory } from "@/types/Meal";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export function CategorySection({
   category,
@@ -15,9 +16,11 @@ export function CategorySection({
   selections: string[];
   onChange: (mealId: string) => void;
 }) {
+  const isMobile = useIsMobile();
+  
   return (
-    <div style={{ marginBottom: "24px" }}>
-      <p style={{ fontSize: "0.95rem", marginBottom: 8 }}>{config.label}</p>
+    <div style={{ marginBottom: isMobile ? "20px" : "24px" }}>
+      <p style={{ fontSize: "0.9rem", marginBottom: 8, fontWeight: 500 }}>{config.label}</p>
 
       {config.inputType === "dropdown" && (
         <select
@@ -25,11 +28,12 @@ export function CategorySection({
           onChange={(e) => onChange(e.target.value)}
           style={{
             width: "100%",
-            padding: "8px",
+            padding: isMobile ? "10px" : "8px",
             borderRadius: "8px",
             border: "1px solid #374151",
             background: "#020617",
             color: "#e5e7eb",
+            fontSize: isMobile ? "16px" : "14px",
           }}
         >
           <option value="">— None —</option>
@@ -51,7 +55,8 @@ export function CategorySection({
                   alignItems: "center",
                   gap: 8,
                   cursor: "pointer",
-                  fontSize: "0.9rem",
+                  fontSize: isMobile ? "0.85rem" : "0.9rem",
+                  padding: isMobile ? "4px 0" : "2px 0",
                 }}
               >
                 <input
@@ -78,7 +83,8 @@ export function CategorySection({
                 alignItems: "center",
                 gap: 8,
                 cursor: "pointer",
-                fontSize: "0.9rem",
+                fontSize: isMobile ? "0.85rem" : "0.9rem",
+                padding: isMobile ? "4px 0" : "2px 0",
               }}
             >
               <input

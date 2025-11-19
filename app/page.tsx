@@ -10,6 +10,7 @@ import { Meal, MealCategory } from "@/types/Meal";
 import { CategorySection } from "@/components/CategorySection";
 import { StatTile } from "@/components/StatTile";
 import { SECTION_BACKGROUND, SELECTED_MEAL_BACKGROUND } from "@/tokens/colors";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 const STORAGE_KEY = "boring-meal-planner-v2";
 const PERSIST_WITH_LOCAL_STORAGE = false;
@@ -19,6 +20,8 @@ const defaultState: PlannerState = {
 };
 
 export default function HomePage() {
+  const isMobile = useIsMobile();
+  
   //
   // ------------------------------
   // INITIAL STATE (lazy-loaded)
@@ -96,7 +99,7 @@ export default function HomePage() {
         minHeight: "100vh",
         display: "flex",
         justifyContent: "center",
-        padding: "24px",
+        padding: "12px",
         width: '100%',
         margin: '0 auto',
       }}
@@ -106,8 +109,9 @@ export default function HomePage() {
           maxWidth: "1200px",
           display: "flex",
           alignItems: 'stretch',
-          flexWrap: "wrap",
-          gap: "24px",
+          flexDirection: isMobile ? "column" : "row",
+          gap: isMobile ? "16px" : "24px",
+          width: "100%",
         }}
       >
 
@@ -115,17 +119,17 @@ export default function HomePage() {
         <section
           style={{
             background: SECTION_BACKGROUND,
-            borderRadius: "16px",
-            padding: "20px",
+            borderRadius: "12px",
+            padding: isMobile ? "16px" : "20px",
             border: "1px solid #1f2937",
-            minWidth: 500,
+            minWidth: isMobile ? "auto" : 500,
             flexGrow: 1,
           }}
         >
-          <h1 style={{ fontSize: "1.5rem", marginBottom: "8px", fontWeight: 600 }}>
+          <h1 style={{ fontSize: isMobile ? "1.25rem" : "1.5rem", marginBottom: "8px", fontWeight: 600 }}>
             Boring Meal Planner
           </h1>
-          <p style={{ fontSize: "0.9rem", color: "#9ca3af", marginBottom: 20 }}>
+          <p style={{ fontSize: "0.85rem", color: "#9ca3af", marginBottom: 16, lineHeight: 1.4 }}>
             Hard-coded for your real meals.  
             Pick breakfast, dinner, fruit, shake, mocha.
           </p>
@@ -175,16 +179,16 @@ export default function HomePage() {
         <section
           style={{
             background: SECTION_BACKGROUND,
-            borderRadius: "16px",
-            padding: "20px",
+            borderRadius: "12px",
+            padding: isMobile ? "16px" : "20px",
             border: "1px solid #1f2937",
-            width: 350,
-            flexGrow: 1,
+            width: isMobile ? "100%" : 350,
+            flexGrow: isMobile ? 0 : 1,
           }}
         >
           <h2
             style={{
-              fontSize: "1.25rem",
+              fontSize: isMobile ? "1.1rem" : "1.25rem",
               marginBottom: "12px",
               fontWeight: 600,
             }}
@@ -196,9 +200,9 @@ export default function HomePage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-              gap: "10px",
-              marginBottom: "20px",
+              gridTemplateColumns: isMobile ? "repeat(4, 1fr)" : "repeat(2, minmax(0, 1fr))",
+              gap: isMobile ? "8px" : "10px",
+              marginBottom: isMobile ? "16px" : "20px",
             }}
           >
             <StatTile label="Calories" value={totals.calories} suffix="kcal" />
