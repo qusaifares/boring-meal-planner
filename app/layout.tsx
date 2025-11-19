@@ -5,7 +5,29 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Boring Meal Planner",
   description: "Hard-coded meal planner for a sane human being.",
+  manifest: "/manifest.json",
+  
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Boring Meal Planner",
+  },
+
+  icons: {
+    icon: [
+      { url: "/icons/192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/512x512.png", sizes: "512x512", type: "image/png" }
+    ],
+    apple: [
+      { url: "/icons/192x192.png", sizes: "192x192", type: "image/png" }
+    ]
+  }
 };
+
+export const viewport = {
+  themeColor: "#000000",
+};
+
 
 export default function RootLayout({
   children,
