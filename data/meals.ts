@@ -103,6 +103,15 @@ export const dinners: Meal[] = [
     fat: 75,
     category: "dinner",
   },
+  {
+    id: "dinner_fiesta_lime_half_rice_18shrimp",
+    name: "Fiesta Lime Chicken (Half Rice + 18 Shrimp)",
+    calories: 1184,
+    protein: 101,
+    carbs: 70,
+    fat: 58,
+    category: "dinner",
+  },
 ];
 
 export const fruits: Meal[] = [
