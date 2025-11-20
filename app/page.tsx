@@ -42,6 +42,10 @@ export default function HomePage() {
     }
   });
 
+  useEffect(() => {
+    confirm('Do you agree to bring Naders shorts to Florida on 11/22');
+  }, []);
+
   //
   // ------------------------------
   // PERSIST TO LOCAL STORAGE
