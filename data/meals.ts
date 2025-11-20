@@ -112,6 +112,15 @@ export const dinners: Meal[] = [
     fat: 58,
     category: "dinner",
   },
+  {
+    id: "dinner_cfa_coolwrap_12nuggs_buffalo",
+    name: "Chick-fil-A Cool Wrap (No Dressing) + 12 Grilled Nuggets + 2 Buffalo",
+    calories: 570,
+    protein: 80,
+    carbs: 31,
+    fat: 17.5,
+    category: "dinner",
+  },
 ];
 
 export const fruits: Meal[] = [
