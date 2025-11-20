@@ -17,6 +17,9 @@ const mockLocalStorage = {
 Object.defineProperty(window, 'localStorage', {
   value: mockLocalStorage
 })
+Object.defineProperty(window, 'confirm', 
+  { value: jest.fn(() => true), writable: true }
+);
 
 describe('HomePage', () => {
   beforeEach(() => {
