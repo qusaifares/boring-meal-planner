@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { MEAL_LIBRARY } from "@/data/meals";
-import { CATEGORY_CONFIG, CategoryConfig } from "@/data/categories";
 import { toggleMeal } from "@/utils/mealToggle";
 import { calculateTotals } from "@/lib/totals";
 import type { PlannerState } from "@/types/planner";
@@ -11,9 +9,8 @@ import { CategorySection } from "@/components/CategorySection";
 import { StatTile } from "@/components/StatTile";
 import { SECTION_BACKGROUND, SELECTED_MEAL_BACKGROUND } from "@/tokens/colors";
 import { useIsMobile } from "@/hooks/useIsMobile";
-
-const STORAGE_KEY = "boring-meal-planner-v2";
-const PERSIST_WITH_LOCAL_STORAGE = false;
+import { useConfig } from "@/context/ConfigContext";
+import { CategoryConfig } from "@/types/plugin";
 
 const defaultState: PlannerState = {
   selections: {},
@@ -21,6 +18,15 @@ const defaultState: PlannerState = {
 
 export default function HomePage() {
   const isMobile = useIsMobile();
+  const config = useConfig();
+  
+  // Extract configuration values with defaults
+  const mealLibrary = config.mealLibrary;
+  const categoryConfig = config.categoryConfig;
+  const enableLocalStorage = config.features?.enableLocalStorage ?? false;
+  const storageKey = config.features?.storageKey ?? "boring-meal-planner-v2";
+  const appTitle = config.branding?.appTitle ?? "Boring Meal Planner";
+  const appDescription = config.branding?.appDescription ?? "Hard-coded for your real meals. Pick breakfast, dinner, fruit, shake, mocha.";
   
   //
   // ------------------------------
@@ -31,8 +37,8 @@ export default function HomePage() {
     if (typeof window === "undefined") return defaultState;
 
     try {
-      if (!PERSIST_WITH_LOCAL_STORAGE) return defaultState;
-      const raw = window.localStorage.getItem(STORAGE_KEY);
+      if (!enableLocalStorage) return defaultState;
+      const raw = window.localStorage.getItem(storageKey);
       if (!raw) return defaultState;
 
       const parsed = JSON.parse(raw) as PlannerState;
@@ -42,10 +48,6 @@ export default function HomePage() {
     }
   });
 
-  useEffect(() => {
-    confirm('Do you agree to bring Naders shorts to Florida on 11/22');
-  }, []);
-
   //
   // ------------------------------
   // PERSIST TO LOCAL STORAGE
@@ -53,10 +55,10 @@ export default function HomePage() {
   //
   useEffect(() => {
     if (typeof window !== "undefined") {
-      if (!PERSIST_WITH_LOCAL_STORAGE) return;
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      if (!enableLocalStorage) return;
+      window.localStorage.setItem(storageKey, JSON.stringify(state));
     }
-  }, [state]);
+  }, [state, enableLocalStorage, storageKey]);
 
   //
   // ------------------------------
@@ -69,13 +71,13 @@ export default function HomePage() {
     (Object.keys(state.selections) as MealCategory[]).forEach((category) => {
       const ids = state.selections[category] ?? [];
       ids.forEach((id) => {
-        const meal = MEAL_LIBRARY.find((m) => m.id === id);
+        const meal = mealLibrary.find((m) => m.id === id);
         if (meal) list.push(meal);
       });
     });
 
     return list;
-  }, [state]);
+  }, [state, mealLibrary]);
 
 
   //
@@ -131,27 +133,26 @@ export default function HomePage() {
           }}
         >
           <h1 style={{ fontSize: isMobile ? "1.25rem" : "1.5rem", marginBottom: "8px", fontWeight: 600 }}>
-            Boring Meal Planner
+            {appTitle}
           </h1>
           <p style={{ fontSize: "0.85rem", color: "#9ca3af", marginBottom: 16, lineHeight: 1.4 }}>
-            Hard-coded for your real meals.  
-            Pick breakfast, dinner, fruit, shake, mocha.
+            {appDescription}
           </p>
 
           {/* ------------------------------ */}
           {/* DYNAMIC CATEGORY RENDER */}
           {/* ------------------------------ */}
 
-          {(Object.entries(CATEGORY_CONFIG) as [MealCategory, CategoryConfig][])
-            .map(([category, config]) => {
-              const meals = MEAL_LIBRARY.filter((m) => m.category === category);
+          {(Object.entries(categoryConfig) as [MealCategory, CategoryConfig][])
+            .map(([category, categoryConf]) => {
+              const meals = mealLibrary.filter((m) => m.category === category);
               const selections = state.selections[category] ?? [];
 
               return (
                 <CategorySection
                   key={category}
                   category={category}
-                  config={config}
+                  config={categoryConf}
                   meals={meals}
                   selections={selections}
                   onChange={(mealId) =>

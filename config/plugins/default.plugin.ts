@@ -1,28 +1,8 @@
-/**
- * @deprecated This file is deprecated and will be removed in a future version.
- * 
- * Configuration now comes from the plugin system. See:
- * - config/plugins/default.plugin.ts for the default meal library
- * - config/plugins/ for other tenant-specific plugins
- * 
- * To access meal data in components, use the useConfig() hook:
- * ```typescript
- * import { useConfig } from '@/context/ConfigContext';
- * 
- * function MyComponent() {
- *   const config = useConfig();
- *   const meals = config.mealLibrary;
- *   // ...
- * }
- * ```
- * 
- * This file is kept temporarily for backward compatibility with existing tests
- * and utilities that have not yet been migrated to the plugin system.
- */
-
+import { AppConfigPlugin } from "@/types/plugin";
 import { Meal } from "@/types/Meal";
 
-export const breakfasts: Meal[] = [
+// Migrated from data/meals.ts
+const breakfasts: Meal[] = [
   {
     id: "breakfast_bagel_turkey",
     name: "Egg, Cheese & Turkey Bagel",
@@ -70,7 +50,7 @@ export const breakfasts: Meal[] = [
   },
 ];
 
-export const dinners: Meal[] = [
+const dinners: Meal[] = [
   {
     id: "dinner_chipotle_quesadilla",
     name: "Chipotle Quesadilla + Side Chicken + Guac",
@@ -145,7 +125,7 @@ export const dinners: Meal[] = [
   },
 ];
 
-export const fruits: Meal[] = [
+const fruits: Meal[] = [
   {
     id: "fruit_apple",
     name: "Apple",
@@ -166,7 +146,7 @@ export const fruits: Meal[] = [
   },
 ];
 
-export const coffees: Meal[] = [
+const coffees: Meal[] = [
   {
     id: "coffee_mocha_halfsweet",
     name: "Mocha (Half Sweet, 2% Milk)",
@@ -196,7 +176,7 @@ export const coffees: Meal[] = [
   },
 ];
 
-export const proteinShakes: Meal[] = [
+const proteinShakes: Meal[] = [
   {
     id: "protein_shake",
     name: "Protein Shake (1 scoop whey)",
@@ -208,7 +188,7 @@ export const proteinShakes: Meal[] = [
   },
 ];
 
-export const snacks: Meal[] = [
+const snacks: Meal[] = [
   {
     id: "snack_turkey_slices_2",
     name: "2 Turkey Slices",
@@ -217,14 +197,73 @@ export const snacks: Meal[] = [
     carbs: 0,
     fat: 0,
     category: "snack",
-  }
+  },
 ];
 
-export const MEAL_LIBRARY: Meal[] = [
-  ...breakfasts,
-  ...dinners,
-  ...fruits,
-  ...coffees,
-  ...snacks,
-  ...proteinShakes,
-];
+/**
+ * Default plugin containing the original hardcoded configuration
+ * from the Boring Meal Planner application.
+ */
+export const defaultPlugin: AppConfigPlugin = {
+  // Metadata
+  tenantId: "default",
+  tenantName: "Default User",
+  version: "1.0.0",
+
+  // Meal library - migrated from data/meals.ts
+  mealLibrary: [
+    ...breakfasts,
+    ...dinners,
+    ...fruits,
+    ...coffees,
+    ...snacks,
+    ...proteinShakes,
+  ],
+
+  // Category configuration - migrated from data/categories.ts
+  categoryConfig: {
+    breakfast: {
+      label: "Breakfast",
+      inputType: "dropdown",
+      maxSelections: 1,
+    },
+    dinner: {
+      label: "Dinner",
+      inputType: "dropdown",
+      maxSelections: 1,
+    },
+    coffee: {
+      label: "Coffee",
+      inputType: "radio",
+      maxSelections: 1,
+    },
+    fruit: {
+      label: "Fruit",
+      inputType: "checkbox",
+      maxSelections: Infinity,
+    },
+    snack: {
+      label: "Snacks",
+      inputType: "checkbox",
+      maxSelections: Infinity,
+    },
+    shake: {
+      label: "Protein Shake",
+      inputType: "radio",
+      maxSelections: 1,
+    },
+  },
+
+  // Branding - matching current app title and description from app/page.tsx
+  branding: {
+    appTitle: "Boring Meal Planner",
+    appDescription: "Hard-coded for your real meals. Pick breakfast, dinner, fruit, shake, mocha.",
+  },
+
+  // Feature flags - matching current behavior from app/page.tsx
+  features: {
+    enableLocalStorage: false,
+    storageKey: "boring-meal-planner-v2",
+    enableMobileView: true,
+  },
+};

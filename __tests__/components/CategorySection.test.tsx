@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { CategorySection } from '../../components/CategorySection'
 import { Meal } from '../../types/Meal'
-import { CategoryConfig } from '../../data/categories'
+import { CategoryConfig } from '../../types/plugin'
 
 // Mock the useIsMobile hook
 jest.mock('../../hooks/useIsMobile', () => ({

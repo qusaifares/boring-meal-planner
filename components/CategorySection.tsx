@@ -1,5 +1,4 @@
-import { CategoryConfig } from "@/data/categories";
-import { MEAL_LIBRARY } from "@/data/meals";
+import { CategoryConfig } from "@/types/plugin";
 import { Meal, MealCategory } from "@/types/Meal";
 import { useIsMobile } from "@/hooks/useIsMobile";
 

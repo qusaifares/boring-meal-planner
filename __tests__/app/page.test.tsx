@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import HomePage from '../../app/page'
+import { ConfigProvider } from '../../context/ConfigContext'
 
 // Mock the hooks and components
 jest.mock('../../hooks/useIsMobile', () => ({
@@ -22,20 +23,29 @@ Object.defineProperty(window, 'confirm',
 );
 
 describe('HomePage', () => {
+  // Helper function to render with ConfigProvider
+  const renderWithConfig = (component: React.ReactElement) => {
+    return render(
+      <ConfigProvider>
+        {component}
+      </ConfigProvider>
+    )
+  }
+
   beforeEach(() => {
     jest.clearAllMocks()
     mockLocalStorage.getItem.mockReturnValue(null)
   })
 
   it('renders main heading and description', () => {
-    render(<HomePage />)
+    renderWithConfig(<HomePage />)
     
     expect(screen.getByText('Boring Meal Planner')).toBeInTheDocument()
     expect(screen.getByText(/Hard-coded for your real meals/)).toBeInTheDocument()
   })
 
   it('renders all category sections', () => {
-    render(<HomePage />)
+    renderWithConfig(<HomePage />)
     
     expect(screen.getByText('Breakfast')).toBeInTheDocument()
     expect(screen.getByText('Dinner')).toBeInTheDocument()
@@ -46,7 +56,7 @@ describe('HomePage', () => {
   })
 
   it('renders summary section with stat tiles', () => {
-    render(<HomePage />)
+    renderWithConfig(<HomePage />)
     
     expect(screen.getByText("Today's Summary")).toBeInTheDocument()
     expect(screen.getByText('Calories')).toBeInTheDocument()
@@ -56,26 +66,26 @@ describe('HomePage', () => {
   })
 
   it('shows zero totals initially', () => {
-    render(<HomePage />)
+    renderWithConfig(<HomePage />)
     
     expect(screen.getByText('0 kcal')).toBeInTheDocument()
     expect(screen.getAllByText('0 g')).toHaveLength(3)
   })
 
   it('shows "Nothing selected yet" when no meals selected', () => {
-    render(<HomePage />)
+    renderWithConfig(<HomePage />)
     
     expect(screen.getByText('Nothing selected yet.')).toBeInTheDocument()
   })
 
   it('renders clear day button', () => {
-    render(<HomePage />)
+    renderWithConfig(<HomePage />)
     
     expect(screen.getByText('Clear day')).toBeInTheDocument()
   })
 
   it('clears selections when clear button is clicked', async () => {
-    render(<HomePage />)
+    renderWithConfig(<HomePage />)
     
     // Click clear button
     const clearButton = screen.getByText('Clear day')
@@ -86,14 +96,14 @@ describe('HomePage', () => {
   })
 
   it('updates totals when meals are selected', () => {
-    render(<HomePage />)
+    renderWithConfig(<HomePage />)
     
     // Initial state should show zeros
     expect(screen.getByText('0 kcal')).toBeInTheDocument()
   })
 
   it('displays selected meals in the summary', () => {
-    render(<HomePage />)
+    renderWithConfig(<HomePage />)
     
     // Should show nothing selected initially
     expect(screen.getByText('Nothing selected yet.')).toBeInTheDocument()

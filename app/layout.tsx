@@ -1,6 +1,7 @@
 import { BACKGROUND } from "@/tokens/colors";
 import "./globals.css";
 import type { Metadata } from "next";
+import { ConfigProvider } from "@/context/ConfigContext";
 
 export const metadata: Metadata = {
   title: "Boring Meal Planner",
@@ -47,7 +48,7 @@ export default function RootLayout({
           color: "#f9fafb",
         }}
       >
-        {children}
+        <ConfigProvider>{children}</ConfigProvider>
       </body>
     </html>
   );
