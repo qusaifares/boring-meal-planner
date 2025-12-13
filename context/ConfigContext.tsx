@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useMemo, ReactNode } from "react";
+import { createContext, useContext, useMemo, ReactNode } from "react";
 import { AppConfigPlugin } from "../types/plugin";
 import { ConfigurationInjector } from "../config/injector";
 import { allPlugins } from "../config/plugins";
@@ -38,7 +38,10 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
   }, []);
 
   // Get the active plugin configuration
-  const config = injector.getConfig();
+  // The injector handles SSR/client differences internally
+  const config = useMemo(() => {
+    return injector.getConfig();
+  }, [injector]);
 
   // Provide both config and injector through context
   const value = useMemo(

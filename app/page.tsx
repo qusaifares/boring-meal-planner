@@ -7,6 +7,7 @@ import type { PlannerState } from "@/types/planner";
 import { Meal, MealCategory } from "@/types/Meal";
 import { CategorySection } from "@/components/CategorySection";
 import { StatTile } from "@/components/StatTile";
+import { TenantSelector } from "@/components/TenantSelector";
 import { SECTION_BACKGROUND, SELECTED_MEAL_BACKGROUND } from "@/tokens/colors";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useConfig } from "@/context/ConfigContext";
@@ -138,6 +139,9 @@ export default function HomePage() {
           <p style={{ fontSize: "0.85rem", color: "#9ca3af", marginBottom: 16, lineHeight: 1.4 }}>
             {appDescription}
           </p>
+
+          {/* Tenant Selector */}
+          <TenantSelector />
 
           {/* ------------------------------ */}
           {/* DYNAMIC CATEGORY RENDER */}

@@ -86,12 +86,18 @@ export class ConfigurationInjector {
   /**
    * Resolves the tenant ID using configured resolution strategies.
    * Executes strategies in priority order and caches the result.
+   * 
+   * Note: During SSR, browser-dependent strategies (url, subdomain) will return null,
+   * causing fallback to environment or default strategies.
    *
    * @returns The resolved tenant ID
    */
   private resolveTenantId(): string {
-    // Return cached value if available
-    if (this.cachedTenantId !== null) {
+    // Don't cache during SSR to allow re-evaluation on client
+    const isSSR = typeof window === "undefined";
+    
+    // Return cached value if available and not in SSR
+    if (!isSSR && this.cachedTenantId !== null) {
       return this.cachedTenantId;
     }
 
@@ -114,15 +120,19 @@ export class ConfigurationInjector {
           break;
       }
 
-      // If strategy returned a valid tenant ID, cache and return it
+      // If strategy returned a valid tenant ID, cache and return it (only on client)
       if (tenantId !== null) {
-        this.cachedTenantId = tenantId;
+        if (!isSSR) {
+          this.cachedTenantId = tenantId;
+        }
         return tenantId;
       }
     }
 
     // Fallback to default tenant if all strategies fail
-    this.cachedTenantId = this.defaultTenantId;
+    if (!isSSR) {
+      this.cachedTenantId = this.defaultTenantId;
+    }
     return this.defaultTenantId;
   }
 

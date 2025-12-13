@@ -13,7 +13,7 @@ export { costcoKitchenPlugin } from './costco-kitchen.plugin';
 /**
  * Array of all available plugins for easy iteration
  */
-export const allPlugins = [defaultPlugin, veggiePlugin, costcoKitchenPlugin];
+export const allPlugins = [defaultPlugin, costcoKitchenPlugin];
 
 /**
  * Register all plugins with the registry on module load.

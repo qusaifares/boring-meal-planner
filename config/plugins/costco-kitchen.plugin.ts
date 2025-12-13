@@ -228,7 +228,7 @@ const snacks: Meal[] = [
     id: "snack_triple_chocolate_muffin",
     name: "Kirkland Signature Triple Chocolate Muffin",
     calories: 410,
-    
+
     // Conservative estimate (treat macros as approximate)
     // Goal: don't over-credit protein on a cut.
     protein: 5,
@@ -323,6 +323,36 @@ const sides: Meal[] = [
   },
 ];
 
+const coffees: Meal[] = [
+  {
+    id: "coffee_mocha_halfsweet",
+    name: "Mocha (Half Sweet, 2% Milk)",
+    calories: 220,
+    protein: 10,
+    carbs: 28,
+    fat: 7,
+    category: "coffee",
+  },
+  {
+    id: "coffee_black",
+    name: "Black Coffee",
+    calories: 2,
+    protein: 0,
+    carbs: 0,
+    fat: 0,
+    category: "coffee",
+  },
+  {
+    id: "coffee_sf_vanilla_latte",
+    name: "Sugar-Free Vanilla Latte (2% Milk)",
+    calories: 130,
+    protein: 10,
+    carbs: 12,
+    fat: 5,
+    category: "coffee",
+  },
+];
+
 // ---------- Plugin ----------
 export const costcoKitchenPlugin: AppConfigPlugin = {
   tenantId: "costco-kitchen",
@@ -330,6 +360,7 @@ export const costcoKitchenPlugin: AppConfigPlugin = {
   version: "1.0.0",
 
   mealLibrary: [
+    ...coffees,
     ...breakfasts,
     ...lunches,
     ...dinners,
@@ -353,6 +384,11 @@ export const costcoKitchenPlugin: AppConfigPlugin = {
     dinner: {
       label: "Dinner",
       inputType: "dropdown",
+      maxSelections: 1,
+    },
+    coffee: {
+      label: "Coffee",
+      inputType: "radio",
       maxSelections: 1,
     },
     shake: {
