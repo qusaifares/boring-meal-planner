@@ -43,7 +43,7 @@ export interface AppConfigPlugin {
   mealLibrary: Meal[];
 
   // Category configuration
-  categoryConfig: Record<MealCategory, CategoryConfig>;
+  categoryConfig: Partial<Record<MealCategory, CategoryConfig>>;
 
   // UI/Branding (optional for extensibility)
   branding?: BrandingConfig;

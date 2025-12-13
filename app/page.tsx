@@ -145,7 +145,7 @@ export default function HomePage() {
 
           {(Object.entries(categoryConfig) as [MealCategory, CategoryConfig][])
             .map(([category, categoryConf]) => {
-              const meals = mealLibrary.filter((m) => m.category === category);
+              const meals = mealLibrary.filter((m) => m.category === category).sort((a, b) => b.protein - a.protein);
               const selections = state.selections[category] ?? [];
 
               return (
@@ -156,7 +156,7 @@ export default function HomePage() {
                   meals={meals}
                   selections={selections}
                   onChange={(mealId) =>
-                    setState((prev) => toggleMeal(prev, category, mealId))
+                    setState((prev) => toggleMeal(prev, category, mealId, categoryConfig))
                   }
                 />
               );

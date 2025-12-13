@@ -4,7 +4,9 @@ export type MealCategory =
   | "fruit"
   | "coffee"
   | "shake"
-  | "snack";
+  | "snack"
+  | "side"
+  | "lunch";
 
 export type Meal = {
   id: string;

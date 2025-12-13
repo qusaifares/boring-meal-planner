@@ -1,5 +1,5 @@
-import { CATEGORY_CONFIG } from "@/data/categories";
 import { MealCategory } from "@/types/Meal";
+import { CategoryConfig } from "@/types/plugin";
 import type { PlannerState } from "@/types/planner";
 
 // ------------------
@@ -51,9 +51,10 @@ function applyCheckboxSelection(
 export function toggleMeal(
   prev: PlannerState,
   category: MealCategory,
-  mealId: string | null
+  mealId: string | null,
+  categoryConfig: Partial<Record<MealCategory, CategoryConfig>>
 ): PlannerState {
-  const config = CATEGORY_CONFIG[category];
+  const config = categoryConfig[category];
   if (!config) return prev;
 
   const current = prev.selections[category] ?? [];

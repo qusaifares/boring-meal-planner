@@ -219,7 +219,7 @@ export const veggiePlugin: AppConfigPlugin = {
 
   // Feature flags
   features: {
-    enableLocalStorage: true,
+    enableLocalStorage: false,
     storageKey: "veggie-meal-planner-v1",
     enableMobileView: true,
   },

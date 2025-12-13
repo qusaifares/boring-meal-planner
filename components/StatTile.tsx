@@ -9,6 +9,8 @@ export type StatTileProps = {
 
 export function StatTile({ label, value, suffix }: StatTileProps) {
   const isMobile = useIsMobile();
+
+  const displayableValue = Math.round(value*10)/10;
   
   return (
     <div
@@ -31,7 +33,7 @@ export function StatTile({ label, value, suffix }: StatTileProps) {
         {label}
       </p>
       <p style={{ fontSize: isMobile ? "0.9rem" : "1.1rem", fontWeight: 600 }}>
-        {value}
+        {displayableValue}
         {suffix ? ` ${suffix}` : ""}
       </p>
     </div>
