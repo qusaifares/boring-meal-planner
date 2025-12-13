@@ -224,6 +224,18 @@ const snacks: Meal[] = [
     fat: 1,
     category: "snack",
   },
+  {
+    id: "snack_triple_chocolate_muffin",
+    name: "Kirkland Signature Triple Chocolate Muffin",
+    calories: 410,
+    
+    // Conservative estimate (treat macros as approximate)
+    // Goal: don't over-credit protein on a cut.
+    protein: 5,
+    carbs: 59,
+    fat: 17,
+    category: "snack",
+  }
 ];
 
 // ---------- Sides (low-cal / carb knobs) ----------
