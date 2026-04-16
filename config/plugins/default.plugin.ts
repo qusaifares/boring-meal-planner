@@ -123,6 +123,24 @@ const dinners: Meal[] = [
     fat: 17.5,
     category: "dinner",
   },
+  {
+    id: "dinner_beef_pasta",
+    name: "Beef Pasta - 400g serving - 1/9.75 servings",
+    calories: 611,
+    protein: 52,
+    carbs: 41,
+    fat: 29,
+    category: "dinner",
+  },
+  {
+    id: "dinner_buffalo_chicken_turkey_bacon_pasta",
+    name: "Buffalo Chicken Turkey Bacon Pasta - ~400g serving - ~1/8 servings",
+    calories: 486,
+    protein: 69,
+    carbs: 27,
+    fat: 11,
+    category: "dinner",
+  },
 ];
 
 const fruits: Meal[] = [
@@ -184,6 +202,15 @@ const proteinShakes: Meal[] = [
     protein: 24,
     carbs: 3,
     fat: 2,
+    category: "shake",
+  },
+  {
+    id: "shake_fairlife_nutrition_plan_chocolate",
+    name: "Fairlife Nutrition Plan (Chocolate)",
+    calories: 150,
+    protein: 30,
+    carbs: 3,
+    fat: 2.5,
     category: "shake",
   },
 ];
