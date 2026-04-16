@@ -17,8 +17,21 @@ function removeFromArray(arr: string[], id: string): string[] {
 }
 
 // ------------------
-// Helper: checkbox logic
+// Helper: multiselect
 // ------------------
+function applyMultiselectSelection(
+  current: string[],
+  mealId: string,
+  maxSelections: number
+): string[] {
+  if (mealId === '') return [];
+  const isSelected = current.includes(mealId);
+  if (isSelected) return current.filter((x) => x !== mealId);
+  if (current.length >= maxSelections) return [...current.slice(1), mealId];
+  return [...current, mealId];
+}
+
+
 function applyCheckboxSelection(
   current: string[],
   mealId: string,
@@ -62,6 +75,9 @@ export function toggleMeal(
 
   if (config.inputType === "dropdown") {
     nextForCategory = applyDropdownSelection(mealId);
+  } else if (config.inputType === "multiselect") {
+    if (mealId === null || mealId === undefined) return prev;
+    nextForCategory = applyMultiselectSelection(current, mealId, config.maxSelections);
   } else {
     if (mealId === null || mealId === undefined) return prev;
     // TODO: Separate radio into its own block

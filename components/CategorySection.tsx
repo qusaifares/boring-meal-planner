@@ -1,6 +1,7 @@
 import { CategoryConfig } from "@/types/plugin";
 import { Meal, MealCategory } from "@/types/Meal";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { MultiSelectDropdown } from "./MultiSelectDropdown";
 
 export function CategorySection({
   category,
@@ -51,6 +52,15 @@ export function CategorySection({
             </option>
           ))}
         </select>
+      )}
+
+      {config.inputType === "multiselect" && (
+        <MultiSelectDropdown
+          meals={meals}
+          selections={selections}
+          onChange={onChange}
+          isMobile={isMobile}
+        />
       )}
 
       {config.inputType === "radio" && (

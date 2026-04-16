@@ -179,13 +179,13 @@ export const veggiePlugin: AppConfigPlugin = {
   categoryConfig: {
     breakfast: {
       label: "Morning Meal",
-      inputType: "dropdown",
-      maxSelections: 1,
+      inputType: "multiselect",
+      maxSelections: Infinity,
     },
     dinner: {
       label: "Main Meal",
-      inputType: "dropdown",
-      maxSelections: 1,
+      inputType: "multiselect",
+      maxSelections: Infinity,
     },
     coffee: {
       label: "Beverages",

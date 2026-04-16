@@ -24,7 +24,7 @@ export interface FeatureConfig {
  */
 export type CategoryConfig = {
   label: string;
-  inputType: "dropdown" | "checkbox" | "radio";
+  inputType: "dropdown" | "multiselect" | "checkbox" | "radio";
   maxSelections: number;
 };
 

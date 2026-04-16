@@ -373,18 +373,18 @@ export const costcoKitchenPlugin: AppConfigPlugin = {
   categoryConfig: {
     breakfast: {
       label: "Breakfast",
-      inputType: "dropdown",
-      maxSelections: 1,
+      inputType: "multiselect",
+      maxSelections: Infinity,
     },
     lunch: {
       label: "Lunch",
-      inputType: "dropdown",
-      maxSelections: 1,
+      inputType: "multiselect",
+      maxSelections: Infinity,
     },
     dinner: {
       label: "Dinner",
-      inputType: "dropdown",
-      maxSelections: 1,
+      inputType: "multiselect",
+      maxSelections: Infinity,
     },
     coffee: {
       label: "Coffee",
