@@ -23,6 +23,7 @@ const meals: Meal[] = [
   { id: "recent_fairlife_pudding", name: "Fairlife + 18g Jell-O Pudding Mix", calories: 210, protein: 30, carbs: 18, fat: 2.5, category: "snack" },
   { id: "recent_creami_pudding", name: "Ninja Creami: Fairlife + 8g Pudding Mix (No Mix-ins)", calories: 177, protein: 30, carbs: 10, fat: 2.5, category: "snack" },
   { id: "recent_crepini_pancakes", name: "Crepini Pancakes (4-pack)", calories: 220, protein: 8, carbs: 30, fat: 8, category: "snack" },
+  { id: "recent_coldstone_birthday_cake_remix_small", name: "Cold Stone Birthday Cake Remix (Small / Like It)", calories: 670, protein: 8, carbs: 88, fat: 29, category: "snack" },
   { id: "recent_greek_yogurt", name: "Plain Nonfat Greek Yogurt (170g)", calories: 100, protein: 18, carbs: 7, fat: 0, category: "snack" },
   { id: "recent_apple", name: "Apple (Medium)", calories: 95, protein: 0.5, carbs: 25, fat: 0.3, category: "fruit" },
   { id: "recent_banana", name: "Banana (Medium)", calories: 105, protein: 1.3, carbs: 27, fat: 0.4, category: "fruit" },
