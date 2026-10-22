@@ -17,6 +17,7 @@ const meals: Meal[] = [
   { id: "recent_korean_ground_beef", name: "Korean 95/5 Ground Beef Bowl (225g Beef, 150g Rice, Sauce, Mushrooms)", calories: 650, protein: 54, carbs: 61, fat: 21, category: "dinner" },
   { id: "recent_gochujang_chicken", name: "Gochujang Chicken Bowl (225g Breast, 150g Rice, Broccoli)", calories: 550, protein: 59, carbs: 60, fat: 9, category: "dinner" },
   { id: "recent_ny_strip_bulgogi", name: "NY Strip Bulgogi (200g Steak, 150g Rice, Onion & Mushrooms)", calories: 730, protein: 52, carbs: 60, fat: 31, category: "dinner" },
+  { id: "recent_ny_strip_sweet_potato_broccoli", name: "12oz NY Strip + Sweet Potato (200g) + Broccoli (1 cup)", calories: 975, protein: 82, carbs: 49, fat: 50, category: "dinner" },
   { id: "recent_cheeseburger_potatoes", name: "Cheeseburger + 110g Potatoes (225g 95/5 Beef, Brioche, 2 Kraft, 2 Turkey Bacon, 8g Mayo, Butter)", calories: 890, protein: 65, carbs: 62, fat: 43, category: "dinner" },
   { id: "recent_fairlife_chocolate", name: "Fairlife Nutrition Plan Chocolate", calories: 150, protein: 30, carbs: 3, fat: 2.5, category: "shake" },
   { id: "recent_fairlife_pudding", name: "Fairlife + 18g Jell-O Pudding Mix", calories: 210, protein: 30, carbs: 18, fat: 2.5, category: "snack" },
