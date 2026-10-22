@@ -10,9 +10,10 @@ import { Meal } from "@/types/Meal";
 const meals: Meal[] = [
   { id: "recent_egg_cheese_bagel", name: "Egg & Cheese Bagel", calories: 430, protein: 22, carbs: 53, fat: 15, category: "breakfast" },
   { id: "recent_avocado_eggs_salmon_toast", name: "Avocado Toast + 2 Eggs + Salmon", calories: 520, protein: 33, carbs: 34, fat: 29, category: "breakfast" },
-  { id: "recent_ms_chicken_carrots", name: "Microsoft Chicken + Rainbow Carrots (190 + 50 cal)", calories: 240, protein: 38, carbs: 10, fat: 6, category: "lunch" },
-  { id: "recent_ms_chicken_vegetables", name: "Microsoft Chicken + Vegetables", calories: 260, protein: 38, carbs: 12, fat: 6, category: "lunch" },
+  { id: "recent_ms_chicken_vegetables", name: "Microsoft Chicken + Vegetables (including Rainbow Carrots)", calories: 260, protein: 38, carbs: 12, fat: 6, category: "lunch" },
   { id: "recent_ms_steelhead_salad", name: "Microsoft Steelhead Salad (Greens, Egg, Feta, Vegetables)", calories: 580, protein: 44, carbs: 20, fat: 36, category: "lunch" },
+  { id: "recent_ms_steelhead_salad_flank", name: "Microsoft Steelhead Salad + 1/2 Serving Flank Steak", calories: 720, protein: 64, carbs: 20, fat: 42, category: "lunch" },
+  { id: "recent_ms_steelhead_salad_chicken", name: "Microsoft Steelhead Salad + 1/2 Serving Chicken Breast", calories: 680, protein: 66, carbs: 20, fat: 38, category: "lunch" },
   { id: "recent_korean_ground_beef", name: "Korean 95/5 Ground Beef Bowl (225g Beef, 150g Rice, Sauce, Mushrooms)", calories: 650, protein: 54, carbs: 61, fat: 21, category: "dinner" },
   { id: "recent_gochujang_chicken", name: "Gochujang Chicken Bowl (225g Breast, 150g Rice, Broccoli)", calories: 550, protein: 59, carbs: 60, fat: 9, category: "dinner" },
   { id: "recent_ny_strip_bulgogi", name: "NY Strip Bulgogi (200g Steak, 150g Rice, Onion & Mushrooms)", calories: 730, protein: 52, carbs: 60, fat: 31, category: "dinner" },
