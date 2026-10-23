@@ -25,6 +25,7 @@ const meals: Meal[] = [
   { id: "recent_crepini_pancakes", name: "Crepini Pancakes (4-pack)", calories: 220, protein: 8, carbs: 30, fat: 8, category: "snack" },
   { id: "recent_greek_yogurt", name: "Plain Nonfat Greek Yogurt (170g)", calories: 100, protein: 18, carbs: 7, fat: 0, category: "snack" },
   // Treats are estimates; choose either a combo or its component items, not both.
+  { id: "recent_chicken_shawarma_toum_fries", name: "Plain Chicken Shawarma + Toum (2 tbsp) + Fries (150g), No Wrap", calories: 850, protein: 54, carbs: 61, fat: 42, category: "treat" },
   { id: "recent_qamaria_adeni", name: "Qamaria Adeni Tea (Estimated Serving)", calories: 250, protein: 6, carbs: 38, fat: 8, category: "treat" },
   { id: "recent_qamaria_egg_puff", name: "Qamaria Egg Puff (1 Pastry)", calories: 325, protein: 9, carbs: 30, fat: 19, category: "treat" },
   { id: "recent_qamaria_beef_pastry", name: "Qamaria Beef Pastry (1 Pastry)", calories: 400, protein: 15, carbs: 35, fat: 22, category: "treat" },
